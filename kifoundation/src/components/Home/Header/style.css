@@ -1,0 +1,11 @@
+.card-image {
+    height: 170px;
+    display: block;
+    position: absolute;
+    top: -25px;
+    transition: all 0.1s ease-out,
+}
+
+.header-mail {
+    max-width: 300px;
+}
