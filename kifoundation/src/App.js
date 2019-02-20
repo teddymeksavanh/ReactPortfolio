@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App h-100">
-        <Navbar/>
+        <Navbar {...this.props}/>
         <Route exact path="/" component={props => <Home/>}/>
         {/* <Route exact path="/whitepaper" component={props => <Whitepaper/>}/> */}
         <Route exact path="/team" component={props => <Team/>}/>

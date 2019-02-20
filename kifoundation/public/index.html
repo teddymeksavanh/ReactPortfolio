@@ -24,6 +24,7 @@
         canvas {
 					opacity: 0.2;
 					z-index: -1;
+					/* height: 170% !important; */
         }
         #info {
           display: none;
@@ -178,7 +179,7 @@ getErrorMessage: function ( version ) {
 			animate();
 			function init() {
 				container = document.createElement( 'div' );
-				container.classList.add('threejswrapper')
+				container.classList.add('threejswrapper');
 				document.body.appendChild( container );
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 				camera.position.z = 1000;

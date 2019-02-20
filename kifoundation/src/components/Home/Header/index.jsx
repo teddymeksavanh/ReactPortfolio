@@ -13,7 +13,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 // Images
 // import KiDevice from '../../../assets/home/markets_illustration_h.gif';
-import KiDevice from '../../../assets/ki_foundation/domo_device.png';
+import KiDevice from '../../../assets/ki_foundation/domo_device_side.png';
 import KiBlockchain from '../../../assets/home/exchange_illustration_h.gif';
 import KiWallet from '../../../assets/home/launch_illustration_h.gif';
 import KiEcosystem from '../../../assets/home/solutions_illustration_h.gif'; 
@@ -28,6 +28,8 @@ const styles = {
         // width: 200,
         // height: 230,
         // margin: "0 15px",
+        maxWidth: 250,
+        margin: "0 auto",
         cursor: "pointer",
         backgroundColor: "#f8fbfa",
         boxShadow: "0 9px 50px rgba(0,0,0,0.1)",
@@ -85,14 +87,11 @@ const styles = {
         marginLeft: "auto",
         marginRight: "auto",
         '&::before': {
-            content: `''`,
+            content: `'_'`,
             position: 'absolute',
-            width: '1.2rem',
-            height: '0',
-            border: '2px solid transparent',
-            borderTopColor: '#0021f5',
             left: "-40px",
-            bottom: "8px"
+            top: "-7px",
+            color: "#0021f5"
         }
     },
     headerTitleText: {
@@ -107,13 +106,24 @@ const styles = {
     },
     joinBtn: {
         padding: "0.5rem 1rem",
-        backgroundColor: "#0021f5",
+        border: "2px solid #0021f5 !important",
         color: "#fff",
-        border: "none"
+        border: "none",
+        '&:focus': {
+            outline: "none"
+        }
     },
     joinInput: {
         padding: ".37rem",
-        borderColor: "#0021f5"
+        border: "2px solid #0021f5 !important",
+        '&:focus': {
+            outline: "none"
+        }
+    },
+    cardHref: {
+        '&:hover': {
+            textDecoration: "none"
+        }
     }
 };
 
@@ -135,15 +145,17 @@ class Header extends React.Component {
         let renderCardsData = cardsData.map((cd, key) => {
             return (
                 <div key={key} className="col-md-4 my-4">
-                    <Card key={key} className={classes.card}>
-                        <CardContent>
-                            <div className={classes.cardImageWrapper}>
-                                <img className="card-image" src={cd.image} alt={cd.image} />
-                            </div>
-                            <Typography className={classes.cardTitle} variant="h6"> {cd.name} </Typography>
-                            <button type="button" className={classes.cardButton} size="small">Learn More <ArrowRightAlt className={classes.arrowRight}/></button>
-                        </CardContent>
-                    </Card>
+                    <a className={classes.cardHref} href="https://domo.ki" target="_blank">
+                        <Card key={key} className={classes.card}>
+                            <CardContent>
+                                <div className={classes.cardImageWrapper}>
+                                    <img className="card-image" src={cd.image} alt={cd.image} />
+                                </div>
+                                <Typography className={classes.cardTitle} variant="h6"> {cd.name} </Typography>
+                                <button type="button" className={classes.cardButton} size="small">Learn More <ArrowRightAlt className={classes.arrowRight}/></button>
+                            </CardContent>
+                        </Card>
+                    </a>
                 </div>
             );
         });

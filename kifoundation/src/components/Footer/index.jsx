@@ -62,13 +62,13 @@ class Footer extends React.Component {
                             <a className={classes.link} href="/">Terms of use</a>
                         </div>
                         <div className="col-md-4 mb-2">
-                            <Typography className={classes.title} variant="h6"> Find Us </Typography>
-                            <a className={classes.link} href="/">Contact</a>
-                            <a className={classes.link} href="/">Facebook</a>
+                            <Typography className={classes.title} variant="h6"> Contact Us </Typography>
+                            <a className={classes.link} href="https://t.me/joinchat/DTzxkEh7OReR7MKXY7MGrw" target="_blank">Telegram</a>
+                            {/* <a className={classes.link} href="/">Facebook</a>
                             <a className={classes.link} href="/">Twitter</a>
                             <a className={classes.link} href="/">Linkedin</a>
                             <a className={classes.link} href="/">Discord</a>
-                            <a className={classes.link} href="/">Medium</a>
+                            <a className={classes.link} href="/">Medium</a> */}
                         </div>
                     </div>
                 </div>
