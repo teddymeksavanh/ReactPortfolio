@@ -12,7 +12,7 @@ import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt'
 import { withStyles } from '@material-ui/core/styles';
 
 // Components
-import CustomMailChimpContact from '../CustomComponent/CustomMailChimpContact';
+// import CustomMailChimpContact from '../CustomComponent/CustomMailChimpContact';
 
 import './style.css';
 
