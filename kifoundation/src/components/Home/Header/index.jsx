@@ -75,6 +75,9 @@ const styles = {
         color: "#3b426c",
         whiteSpace: "nowrap"
     },
+    headerSubtitle: {
+        color: "#3b426c",
+    },
     bullet: {
         display: 'inline-block',
         margin: '0 2px',
@@ -184,7 +187,7 @@ class Header extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <Typography align="center" variant="h6" className={classes.cardTitle}>
+                            <Typography align="center" variant="h6" className={classes.headerSubtitle}>
                                 1984 should remain a book, not a reality.
                             </Typography>
                         </div>

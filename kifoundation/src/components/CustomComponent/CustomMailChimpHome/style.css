@@ -54,3 +54,8 @@
     }
 }
   
+@media (max-width: 600px) {
+  .mobile-width {
+    max-width: 120px;
+  }
+}
