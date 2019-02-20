@@ -12,7 +12,7 @@ import KiFoundationLogo from '../../assets/ki_foundation/ki_foundation_logo_shor
 
 const styles = {
     root: {
-        padding: "60px 0"
+        padding: "60px 30px"
     },
     divider: {
         margin: "50px 0"
@@ -47,7 +47,7 @@ class Footer extends React.Component {
                     </div>
                     <Divider className={classes.divider}/>
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-4 mb-2">
                             <Typography className={classes.title} variant="h6"> The Ki Foundation </Typography>
                             <a className={classes.link} href="/">Ki Device</a>
                             <a className={classes.link} href="https://blockchain.ki">Ki Blockchain</a>
@@ -56,12 +56,12 @@ class Footer extends React.Component {
                             <a className={classes.link} href="/">Buy Ki</a>
 
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-4 mb-2">
                             <Typography className={classes.title} variant="h6"> Legal </Typography>
                             <a className={classes.link} href="/">Privacy Policy</a>
                             <a className={classes.link} href="/">Terms of use</a>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-4 mb-2">
                             <Typography className={classes.title} variant="h6"> Find Us </Typography>
                             <a className={classes.link} href="/">Contact</a>
                             <a className={classes.link} href="/">Facebook</a>

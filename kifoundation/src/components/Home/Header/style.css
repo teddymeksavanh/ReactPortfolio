@@ -9,3 +9,32 @@
 .header-mail {
     max-width: 200px;
 }
+
+#header-component {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-wrapper {
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    #header-component {
+        display: block;
+        margin-top: 7rem;
+    }
+
+    .home-wrapper {
+        height: auto;
+    }
+}
+
+@media (max-height: 710px) {
+    #header-component {
+        display: block;
+        margin-top: 7rem;
+    }
+}
+

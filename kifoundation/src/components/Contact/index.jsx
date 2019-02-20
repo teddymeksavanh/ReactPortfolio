@@ -30,9 +30,9 @@ class Contact extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className="h-100 vertical-align contact-page">
-                <div className="container">
-                    <div className="row justify-content-center">
+            <div className="pt-5 h-100 contact-page">
+                <div className="container px-4 pt-5">
+                    <div className="row justify-content-center pt-5">
                         <div className="col-md-6">
                             <Typography className={classes.title} align="center" variant="h2">
                                 Contact Us

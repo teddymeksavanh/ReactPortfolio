@@ -20,9 +20,9 @@ import "./style.css";
 
 const styles = {
     card: {
-        width: 200,
-        height: 230,
-        margin: "0 15px",
+        // width: 200,
+        // height: 230,
+        // margin: "0 15px",
         backgroundColor: "#f8fbfa",
         boxShadow: "0 9px 50px rgba(0,0,0,0.1)",
         transition: "all 0.1s ease-out",
@@ -64,7 +64,8 @@ const styles = {
         height: 18
     },
     cardTitle: {
-        color: "#3b426c"
+        color: "#3b426c",
+        whiteSpace: "nowrap"
     },
     bullet: {
         display: 'inline-block',
@@ -74,6 +75,9 @@ const styles = {
     headerTitle: {
         color: "#3b426c",
         position: "relative",
+        width: "fit-content",
+        marginLeft: "auto",
+        marginRight: "auto",
         '&::before': {
             content: `''`,
             position: 'absolute',
@@ -81,7 +85,7 @@ const styles = {
             height: '0',
             border: '2px solid transparent',
             borderTopColor: '#0021f5',
-            left: "58px",
+            left: "-40px",
             bottom: "8px"
         }
     },
@@ -111,24 +115,26 @@ class Header extends React.Component {
         ];
         let renderCardsData = cardsData.map((cd, key) => {
             return (
-                <Card key={key} className={classes.card}>
-                    <CardContent>
-                        <div className={classes.cardImageWrapper}>
-                            <img className="card-image" src={cd.image} alt={cd.image} />
-                        </div>
-                        <Typography className={classes.cardTitle} variant="h6"> {cd.name} </Typography>
-                        <button type="button" className={classes.cardButton} size="small">Learn More <ArrowRightAlt className={classes.arrowRight}/></button>
-                    </CardContent>
-                </Card>
+                <div className="col-md-3 my-4">
+                    <Card key={key} className={classes.card}>
+                        <CardContent>
+                            <div className={classes.cardImageWrapper}>
+                                <img className="card-image" src={cd.image} alt={cd.image} />
+                            </div>
+                            <Typography className={classes.cardTitle} variant="h6"> {cd.name} </Typography>
+                            <button type="button" className={classes.cardButton} size="small">Learn More <ArrowRightAlt className={classes.arrowRight}/></button>
+                        </CardContent>
+                    </Card>
+                </div>
             );
         });
-        return <div className="vertical-align">{renderCardsData}</div>
+        return <div className="row">{renderCardsData}</div>
     }
     render() {
         const { classes } = this.props;
         return (
-            <div className="h-100 vertical-align header-component" id="header-component">
-                <div className="container">
+            <div className="h-100 header-component" id="header-component">
+                <div className="container custom-header-container">
                     <div className="row justify-content-md-center">
                         <div className="col-md-5">
                             <Typography align="center" variant="h3" gutterBottom className={classes.headerTitle}>
@@ -147,7 +153,7 @@ class Header extends React.Component {
                     <div className="row">
                         <div className="col-md-12">
                             <Typography align="center" variant="h6" className={classes.cardTitle}>
-                                1984 should stay a book, not a reality.
+                                1984 should remain a book, not a reality.
                             </Typography>
                         </div>
                         <div className="col-md-12 text-center">

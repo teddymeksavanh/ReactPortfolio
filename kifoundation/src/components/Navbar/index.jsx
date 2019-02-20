@@ -14,9 +14,12 @@ import Button from '@material-ui/core/Button';
 
 // Images
 import KiFoundationLogo from '../../assets/ki_foundation/logo_foundation.svg';
+import KiFoundationLogoMobile from '../../assets/ki_foundation/ki_foundation_logo_short.png';
 
 // Components
 import NavLink from '../CustomComponent/NavLink';
+
+import './style.css';
 
 const styles = {
   root: {
@@ -36,7 +39,8 @@ const styles = {
     background: "#fff",
     border: 0,
     boxShadow: "none",
-    padding: "0.5rem 4rem 0 4rem"
+    padding: "0.5rem 1rem 0 1rem",
+    minHeight: 72
   },
   link: {
     textTransform: "uppercase",
@@ -46,7 +50,7 @@ const styles = {
   },
   button: {
     color: "#3b426c",
-    margin: "0 2rem",
+    margin: "0 0 0 4rem",
     position: "relative",
     textTransform: "uppercase",
     '&:hover': {
@@ -71,10 +75,8 @@ const Navbar = (props) => {
     <div className={classes.root}>
       <AppBar position="absolute" color="default" className={classes.navbar}>
         <Toolbar>
-          {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton> */}
-          <NavLink to="/"><img height="30" src={KiFoundationLogo} alt="Ki Foundation"/></NavLink>
+          <NavLink className="ki-foundation-logo" to="/"><img height="30" src={KiFoundationLogo} alt="Ki Foundation"/></NavLink>
+          <NavLink className="ki-foundation-logo-mobile" to="/"><img height="30" src={KiFoundationLogoMobile} alt="Ki Foundation"/></NavLink>
           <div className={classes.growRight}>
             {/* <Link className={classes.link} to="/whitepaper"><Button className={classes.button}>Whitepaper</Button></Link> */}
             <NavLink to="/team"><span className={classes.button}>Team</span></NavLink>

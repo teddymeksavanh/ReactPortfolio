@@ -3,6 +3,7 @@ import React from 'react';
 
 // Components
 import Header from './Header';
+import './Header/style.css';
 
 class Home extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div className="h-100">
+      <div className="home-wrapper">
         <Header />
       </div>
     );
