@@ -1,6 +1,7 @@
 // Services
 import React from 'react';
 import PropTypes from 'prop-types';
+import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 // Material
 import Typography from '@material-ui/core/Typography';
@@ -11,10 +12,14 @@ import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt'
 import { withStyles } from '@material-ui/core/styles';
 
 // Images
-import KiDevice from '../../../assets/home/markets_illustration_h.gif';
+// import KiDevice from '../../../assets/home/markets_illustration_h.gif';
+import KiDevice from '../../../assets/ki_foundation/domo_device.png';
 import KiBlockchain from '../../../assets/home/exchange_illustration_h.gif';
 import KiWallet from '../../../assets/home/launch_illustration_h.gif';
 import KiEcosystem from '../../../assets/home/solutions_illustration_h.gif'; 
+
+// Components
+import CustomMailChimpHome from '../../CustomComponent/CustomMailChimpHome';
 
 import "./style.css";
 
@@ -23,6 +28,7 @@ const styles = {
         // width: 200,
         // height: 230,
         // margin: "0 15px",
+        cursor: "pointer",
         backgroundColor: "#f8fbfa",
         boxShadow: "0 9px 50px rgba(0,0,0,0.1)",
         transition: "all 0.1s ease-out",
@@ -98,24 +104,37 @@ const styles = {
     },
     pos: {
         marginBottom: 12,
+    },
+    joinBtn: {
+        padding: "0.5rem 1rem",
+        backgroundColor: "#0021f5",
+        color: "#fff",
+        border: "none"
+    },
+    joinInput: {
+        padding: ".37rem",
+        borderColor: "#0021f5"
     }
 };
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            emailValue: ''
+        }
     }
     renderCards = () => {
         const { classes } = this.props;
         const cardsData = [
             { name: "Ki Device", image: KiDevice, action: "test" },
-            { name: "Ki Blockchain", image: KiBlockchain, action: "test" },
-            { name: "Ki Wallet", image: KiWallet, action: "test" },
-            { name: "Ki Ecosystem", image: KiEcosystem, action: "test" }            
+            // { name: "Ki Blockchain", image: KiBlockchain, action: "test" },
+            // { name: "Ki Wallet", image: KiWallet, action: "test" },
+            // { name: "Ki Ecosystem", image: KiEcosystem, action: "test" }            
         ];
         let renderCardsData = cardsData.map((cd, key) => {
             return (
-                <div className="col-md-3 my-4">
+                <div key={key} className="col-md-4 my-4">
                     <Card key={key} className={classes.card}>
                         <CardContent>
                             <div className={classes.cardImageWrapper}>
@@ -128,10 +147,11 @@ class Header extends React.Component {
                 </div>
             );
         });
-        return <div className="row">{renderCardsData}</div>
+        return <div className="row justify-content-center">{renderCardsData}</div>
     }
     render() {
         const { classes } = this.props;
+        const url = "https://gen.us17.list-manage.com/subscribe/post?u=3865106d3d479f1d2e1ec8400&amp;id=d7cfb8a289";
         return (
             <div className="h-100 header-component" id="header-component">
                 <div className="container custom-header-container">
@@ -156,13 +176,48 @@ class Header extends React.Component {
                                 1984 should remain a book, not a reality.
                             </Typography>
                         </div>
-                        <div className="col-md-12 text-center">
-                            <div className="input-group mb-3 mt-3 vertical-align">
-                                <input type="text" className="form-control header-mail" style={{padding: "1.2rem", borderColor: "#0021f5", borderRadius: 0}} placeholder="Enter your email" aria-label="Enter your email" aria-describedby="basic-addon2" />
-                                <div className="input-group-append" style={{cursor: "pointer"}}>
-                                    <span className="input-group-text primary-bg" style={{padding: "0.5rem", borderRadius: 0, backgroundColor: "#0021f5"}} id="basic-addon2">Join the movement</span>
+                        <div className="col-md-12 text-center pt-4">
+                            <MailchimpSubscribe 
+                                url={url}
+                                render={({ subscribe, status, message }) => (
+                                    <CustomMailChimpHome
+                                        status={status}
+                                        message={message}
+                                        onValidated={formData => subscribe(formData)}
+                                    />
+                                )}
+                            />
+                            {/* <form action="https://gen.us17.list-manage.com/subscribe/post?u=3865106d3d479f1d2e1ec8400&amp;id=d7cfb8a289" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
+                                <div className="input-group mb-3 mt-3 vertical-align">
+                                    <input value={this.state.emailValue} onChange={(e)=>{this.setState({emailValue: e.target.value})}} type="email" value="" name="EMAIL" required className="form-control header-mail" style={{padding: "1.2rem", borderColor: "#0021f5", borderRadius: 0}} placeholder="Enter your email" aria-label="Enter your email" aria-describedby="basic-addon2" />
+                                    <div className="input-group-append" style={{cursor: "pointer"}}>
+                                        <button onClick={this.postToMailChimp()} className="input-group-text primary-bg" style={{padding: "0.5rem", borderRadius: 0, backgroundColor: "#0021f5"}} id="basic-addon2">Join the movement</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form> */}
+                            {/* <div className="input-group mb-3 mt-3 vertical-align">
+                                <form action="https://gen.us17.list-manage.com/subscribe/post" method="POST" noValidate>
+                                    <input type="hidden" name="u" value="3865106d3d479f1d2e1ec8400"/>
+                                    <input type="hidden" name="id" value="d7cfb8a289"/>
+                                    <label htmlFor='MERGE0'>
+                                        <input
+                                            className={classes.joinInput}
+                                            type="email" 
+                                            name="EMAIL" 
+                                            id="MERGE0"
+                                            value={this.state.emailValue} 
+                                            onChange={ (e)=>{this.setState({emailValue: e.target.value});} } 
+                                            autoCapitalize="off" 
+                                            autoCorrect="off"
+                                        /> 
+                                    </label>
+                                    <input type="submit" onClick={(e) => this.postToMailChimp(e)} value="Join the movement" name="subscribe" id="mc-embedded-subscribe" className={classes.joinBtn}/>
+
+                                    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden='true' aria-label="Please leave the following three fields empty">
+                                        <input type="email" name="b_email" tabIndex="-1" value="" placeholder="youremail@gmail.com" id="b_email"/>
+                                    </div>
+                                </form>
+                            </div> */}
                         </div>
                     </div>
                 </div>
