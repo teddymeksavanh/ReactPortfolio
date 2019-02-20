@@ -131,6 +131,9 @@ class Navbar extends React.Component {
     const { mobileOpened } = this.state;
     this.setState({mobileOpened: !mobileOpened});
   }
+  closeNavbar = () => {
+    this.setState({mobileOpened: false});
+  }
   render() {
     const { classes } = this.props;
     const { width, mobileOpened } = this.state;
@@ -162,7 +165,7 @@ class Navbar extends React.Component {
           <div className={classes.menuFixed} hidden={mobileOpened}>
             <AppBar position="absolute" color="default" className={classes.navbarTransparent}>
               <Toolbar>
-                <NavLink className="ki-foundation-logo-mobile" to="/"><img height="30" src={KiFoundationLogoMobile} alt="Ki Foundation"/></NavLink>
+                <NavLink onClick={this.openNavbar} className="ki-foundation-logo-mobile" to="/"><img height="30" src={KiFoundationLogoMobile} alt="Ki Foundation"/></NavLink>
                 <div className={classes.growRight}>
                   {/* <Link className={classes.link} to="/whitepaper"><Button className={classes.button}>Whitepaper</Button></Link> */}
                   <button className={classes.menuIconWrapper} type="button" onClick={this.openNavbar}>
