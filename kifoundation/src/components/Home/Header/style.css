@@ -1,5 +1,5 @@
 .card-image {
-    height: 170px;
+    height: 150px;
     display: block;
     position: absolute;
     top: -25px;
@@ -7,5 +7,5 @@
 }
 
 .header-mail {
-    max-width: 300px;
+    max-width: 200px;
 }

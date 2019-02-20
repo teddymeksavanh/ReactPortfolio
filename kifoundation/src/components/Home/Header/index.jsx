@@ -20,8 +20,8 @@ import "./style.css";
 
 const styles = {
     card: {
-        width: 250,
-        height: 274,
+        width: 200,
+        height: 230,
         margin: "0 15px",
         backgroundColor: "#f8fbfa",
         boxShadow: "0 9px 50px rgba(0,0,0,0.1)",
@@ -34,14 +34,34 @@ const styles = {
         }
     },
     cardImageWrapper: {
-        height: 170,
+        height: 140,
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
     },
     cardButton: {
         color: "#3b426c",
-        paddingLeft: 0
+        background: "transparent",
+        border: "none",
+        cursor: "pointer",
+        textTransform: "uppercase",
+        fontSize: "12px",
+        fontWeight: 500,
+        paddingLeft: 0,
+        '&:hover': {
+            backgroundColor: "inherit",
+            cursor: "pointer"
+        },
+        '&:focus': {
+            backgroundColor: "inherit",
+            outline: "transparent",
+            cursor: "pointer"
+        }
+    },
+    arrowRight: {
+        marginLeft: "0.2rem",
+        opacity: 0.2,
+        height: 18
     },
     cardTitle: {
         color: "#3b426c"
@@ -60,14 +80,14 @@ const styles = {
             width: '1.2rem',
             height: '0',
             border: '2px solid transparent',
-            borderTopColor: '#83c5e1',
-            left: "25px",
+            borderTopColor: '#0021f5',
+            left: "58px",
             bottom: "8px"
         }
     },
     headerTitleText: {
         color: "#3b426c",
-        marginBottom: "4rem"
+        marginBottom: "3rem"
     },
     title: {
         fontSize: 14,
@@ -89,15 +109,15 @@ class Header extends React.Component {
             { name: "Ki Wallet", image: KiWallet, action: "test" },
             { name: "Ki Ecosystem", image: KiEcosystem, action: "test" }            
         ];
-        let renderCardsData = cardsData.map(cd => {
+        let renderCardsData = cardsData.map((cd, key) => {
             return (
-                <Card className={classes.card}>
+                <Card key={key} className={classes.card}>
                     <CardContent>
                         <div className={classes.cardImageWrapper}>
                             <img className="card-image" src={cd.image} alt={cd.image} />
                         </div>
                         <Typography className={classes.cardTitle} variant="h6"> {cd.name} </Typography>
-                        <Button className={classes.cardButton} size="small">Learn More <ArrowRightAlt className="ml-2"/></Button>
+                        <button type="button" className={classes.cardButton} size="small">Learn More <ArrowRightAlt className={classes.arrowRight}/></button>
                     </CardContent>
                 </Card>
             );
@@ -107,11 +127,11 @@ class Header extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className="h-100 vertical-align">
+            <div className="h-100 vertical-align header-component" id="header-component">
                 <div className="container">
                     <div className="row justify-content-md-center">
                         <div className="col-md-5">
-                            <Typography align="center" variant="h2" gutterBottom className={classes.headerTitle}>
+                            <Typography align="center" variant="h3" gutterBottom className={classes.headerTitle}>
                                 Privacy is Ki
                             </Typography>
                             <Typography align="center" variant="subtitle1" gutterBottom className={classes.headerTitleText}>
@@ -119,22 +139,22 @@ class Header extends React.Component {
                             </Typography>
                         </div>
                     </div>
-                    <div className="row mb-5">
-                        <div className="col-md-12 mb-2">
+                    <div className="row mb-4">
+                        <div className="col-md-12">
                             {this.renderCards()}
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <Typography align="center" variant="h5" className={classes.cardTitle}>
+                            <Typography align="center" variant="h6" className={classes.cardTitle}>
                                 1984 should stay a book, not a reality.
                             </Typography>
                         </div>
                         <div className="col-md-12 text-center">
                             <div className="input-group mb-3 mt-3 vertical-align">
-                                <input type="text" className="form-control header-mail" style={{padding: "1.6rem", borderColor: "#0021f5", borderRadius: 0}} placeholder="Enter your email" aria-label="Enter your email" aria-describedby="basic-addon2" />
-                                <div className="input-group-append">
-                                    <span className="input-group-text primary-bg" style={{padding: "0.9rem", borderRadius: 0}} id="basic-addon2">Join the movement</span>
+                                <input type="text" className="form-control header-mail" style={{padding: "1.2rem", borderColor: "#0021f5", borderRadius: 0}} placeholder="Enter your email" aria-label="Enter your email" aria-describedby="basic-addon2" />
+                                <div className="input-group-append" style={{cursor: "pointer"}}>
+                                    <span className="input-group-text primary-bg" style={{padding: "0.5rem", borderRadius: 0, backgroundColor: "#0021f5"}} id="basic-addon2">Join the movement</span>
                                 </div>
                             </div>
                         </div>

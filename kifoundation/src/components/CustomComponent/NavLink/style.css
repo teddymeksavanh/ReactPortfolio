@@ -1,0 +1,12 @@
+.nav-default, .nav-default span{
+    color: rgba(59, 66, 108, 0.9);
+}
+
+.nav-default.nav-active, .nav-active, .nav-default.nav-active span{
+    font-weight: 600;
+    color: rgba(59, 66, 108, 1);
+}
+
+.nav-default:hover{
+    text-decoration: none;
+}

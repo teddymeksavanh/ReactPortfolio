@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/ki_foundation_favicon.ico" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -21,15 +21,9 @@
           /* font-weight: bold; */
           /* text-align:center; */
         }
-        #info {
-          color:#fff;
-          position: absolute;
-          top: 0px;
-          width: 100%;
-          padding: 5px;
-        }
         canvas {
-          opacity: 0.6;
+					opacity: 0.2;
+					z-index: -1;
         }
         #info {
           display: none;
@@ -49,7 +43,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Ki Foundation</title>
   </head>
   <body>
       <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js'></script> -->
@@ -184,6 +178,7 @@ getErrorMessage: function ( version ) {
 			animate();
 			function init() {
 				container = document.createElement( 'div' );
+				container.classList.add('threejswrapper')
 				document.body.appendChild( container );
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 				camera.position.z = 1000;

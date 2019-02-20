@@ -8,11 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 // Images
-import KiFoundationLogo from '../../assets/ki_foundation/logo_foundation.svg';
+import KiFoundationLogo from '../../assets/ki_foundation/ki_foundation_logo_short.png';
 
 const styles = {
     root: {
-        padding: "80px 0"
+        padding: "60px 0"
     },
     divider: {
         margin: "50px 0"

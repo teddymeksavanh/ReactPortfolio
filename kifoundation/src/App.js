@@ -7,6 +7,7 @@ import * as THREE from 'three'
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Whitepaper from './components/Whitepaper';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Team from './components/Team';
 
@@ -21,8 +22,9 @@ class App extends Component {
       <div className="App h-100">
         <Navbar/>
         <Route exact path="/" component={props => <Home/>}/>
-        <Route exact path="/whitepaper" component={props => <Whitepaper/>}/>
+        {/* <Route exact path="/whitepaper" component={props => <Whitepaper/>}/> */}
         <Route exact path="/team" component={props => <Team/>}/>
+        <Route exact path="/contact" component={props => <Contact/>}/>
         <Footer/>
       </div>
     );

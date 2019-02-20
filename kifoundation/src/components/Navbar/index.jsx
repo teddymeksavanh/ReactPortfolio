@@ -15,9 +15,14 @@ import Button from '@material-ui/core/Button';
 // Images
 import KiFoundationLogo from '../../assets/ki_foundation/logo_foundation.svg';
 
+// Components
+import NavLink from '../CustomComponent/NavLink';
+
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    zIndex: 1000,
+    backgroundColor: "#fff"
   },
   growRight: {
     flexGrow: 1,
@@ -28,20 +33,22 @@ const styles = {
     marginRight: 20,
   },
   navbar: {
-    background: "transparent",
+    background: "#fff",
     border: 0,
     boxShadow: "none",
     padding: "0.5rem 4rem 0 4rem"
   },
   link: {
+    textTransform: "uppercase",
     '&:hover': {
       textDecoration: "none"
     }
   },
   button: {
     color: "#3b426c",
-    margin: "0 1.5rem",
+    margin: "0 2rem",
     position: "relative",
+    textTransform: "uppercase",
     '&:hover': {
       backgroundColor: "inherit"
     },
@@ -51,9 +58,9 @@ const styles = {
       width: '1rem',
       height: '0',
       border: '1px solid transparent',
-      borderTopColor: '#83c5e1',
-      left: "-20px",
-      bottom: "12px"
+      borderTopColor: '#0021f5',
+      left: "-26px",
+      bottom: "4px"
     }
   }
 };
@@ -67,11 +74,11 @@ const Navbar = (props) => {
           {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton> */}
-          <Link className={classes.link} to="/"><img height="30" src={KiFoundationLogo} alt="Ki Foundation"/></Link>
+          <NavLink to="/"><img height="30" src={KiFoundationLogo} alt="Ki Foundation"/></NavLink>
           <div className={classes.growRight}>
             {/* <Link className={classes.link} to="/whitepaper"><Button className={classes.button}>Whitepaper</Button></Link> */}
-            <Link className={classes.link} to="/team"><Button className={classes.button}>Team</Button></Link>
-            <Button className={classes.button}>Contact us</Button>
+            <NavLink to="/team"><span className={classes.button}>Team</span></NavLink>
+            <NavLink to="/contact"><span className={classes.button}>Contact Us</span></NavLink>
           </div>
         </Toolbar>
       </AppBar>
