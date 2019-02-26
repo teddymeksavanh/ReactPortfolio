@@ -14,7 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 // Images
 // import KiDevice from '../../../assets/home/markets_illustration_h.gif';
 import KiDevice from '../../../assets/ki_foundation/domo_device_side.png';
-import KiBlockchain from '../../../assets/home/exchange_illustration_h.gif';
+import KiBlockchain from '../../../assets/home/blockchain.png';
 import KiWallet from '../../../assets/home/launch_illustration_h.gif';
 import KiEcosystem from '../../../assets/home/solutions_illustration_h.gif'; 
 
@@ -140,15 +140,15 @@ class Header extends React.Component {
     renderCards = () => {
         const { classes } = this.props;
         const cardsData = [
-            { name: "Ki Device", image: KiDevice, action: "test" },
-            // { name: "Ki Blockchain", image: KiBlockchain, action: "test" },
+            { name: "Ki Device", image: KiDevice, href: "/device" },
+            { name: "Ki Blockchain", image: KiBlockchain, href: "blockchain" },
             // { name: "Ki Wallet", image: KiWallet, action: "test" },
             // { name: "Ki Ecosystem", image: KiEcosystem, action: "test" }            
         ];
         let renderCardsData = cardsData.map((cd, key) => {
             return (
                 <div key={key} className="col-md-4 my-4">
-                    <a className={classes.cardHref} href="https://domo.ki" target="_blank">
+                    <a className={classes.cardHref} href={cd.href}>
                         <Card key={key} className={classes.card}>
                             <CardContent>
                                 <div className={classes.cardImageWrapper}>

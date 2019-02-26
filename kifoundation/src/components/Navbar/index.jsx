@@ -49,7 +49,8 @@ const styles = {
     backgroundColor: "transparent",
     border: 0,
     boxShadow: "none",
-    padding: "0.5rem 1rem 0 1rem",
+    paddingTop: "0.5rem",
+    // padding: "0.5rem 1rem 0 1rem",
     minHeight: 72
   },
   link: {
@@ -194,16 +195,23 @@ class Navbar extends React.Component {
     } else {
       navbar = 
         <div className={classes.rootTransparent}>
-          <AppBar position="absolute" color="default" className={classes.navbarTransparent}>
-            <Toolbar>
-              <NavLink className="ki-foundation-logo" to="/"><img height="30" src={KiFoundationLogo} alt="Ki Foundation"/></NavLink>
-              <div className={classes.growRight}>
-                {/* <Link className={classes.link} to="/whitepaper"><Button className={classes.button}>Whitepaper</Button></Link> */}
-                <NavLink to="/team"><span className={classes.button}>Team</span></NavLink>
-                <NavLink to="/contact"><span className={classes.button}>Contact Us</span></NavLink>
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <AppBar position="absolute" color="default" className={classes.navbarTransparent}>
+                  <Toolbar>
+                    <NavLink className="ki-foundation-logo" to="/"><img height="30" src={KiFoundationLogo} alt="Ki Foundation"/></NavLink>
+                    <div className={classes.growRight}>
+                      {/* <Link className={classes.link} to="/whitepaper"><Button className={classes.button}>Whitepaper</Button></Link> */}
+                      {/* <NavLink to="/device"><span className={classes.button}>Device</span></NavLink> */}
+                      <NavLink to="/team"><span className={classes.button}>Team</span></NavLink>
+                      <NavLink to="/contact"><span className={classes.button}>Contact Us</span></NavLink>
+                    </div>
+                  </Toolbar>
+                </AppBar>
               </div>
-            </Toolbar>
-          </AppBar>
+            </div>
+          </div>
         </div>;
     }
     return navbar;

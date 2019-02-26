@@ -1,0 +1,144 @@
+.custom-tab, .custom-tab button {
+    outline: none !important;
+    background: none !important;
+}
+
+.genki-specs {
+    padding: 60px 10px; }
+  
+  @media (min-width: 768px) {
+    .genki-specs {
+      padding: 60px; }
+    .genki-specs p {
+      font-size: 1.25rem; } 
+}
+
+.boxshadow {
+    background: #fff;
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    text-align: center; 
+}
+
+.genki-specs h3 {
+    text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+    .boxshadow {
+      padding: 1rem 3rem 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .genki-specs {
+      padding: 60px;
+    }
+    .genki-specs p {
+      font-size: 1.25rem;
+    } 
+}
+
+.genki-specs h3 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: aktiv-grotesk,aktiv,Helvetica Neue,Arial,sans-serif;
+}
+
+.genki-specs span, #octagon p {
+    font-family: "aktiv-grotesk", "aktiv", "Helvetica Neue", Arial, sans-serif; 
+}
+  
+.genki-specs p {
+    color: #97989b; 
+}
+
+.list-icons {
+    margin-bottom: 0; 
+}
+  
+.list-icons li {
+    position: relative;
+    border-bottom: 1px solid #e4e4e4;
+    text-align: left;
+    padding: 1.25rem  1.25rem 0 5.625rem;
+    min-height: 90px;
+    height: 90px; 
+}
+  
+.list-icons li h3 {
+    text-align: left; 
+}
+  
+.list-icons li:last-child {
+    border: none; 
+}
+
+.list-icons-align li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 0; 
+}
+
+.list-icons-align h3, .list-icons-align p {
+    margin-bottom: 0; 
+}
+  
+.list-icons--icon {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    width: 50px; 
+}
+  
+.list-icons--icon img, .list-icons--icon svg {
+    vertical-align: middle; 
+}
+
+.icon-octogon {
+    background: url(../../assets/ki_foundation/octogon.png) top center;
+    background-size: 70px 70px;
+    height: 70px;
+    line-height: 70px;
+    width: 70px;
+    margin: 2.75rem auto 1.875rem;
+    position: relative;
+    text-align: center;
+    border-radius: 100%;
+}
+
+.boxshadow .txtlimit {
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+.icon-octogon img, .icon-octogon svg {
+    vertical-align: middle; 
+}
+
+.icon-octogon--invert, .genki-colors-black .icon-octogon {
+    background: url(../../assets/ki_foundation/octogon-invert.png) top center;
+    background-size: 70px 70px;
+}
+
+.no-list-style {
+    list-style-type: none;
+}
+
+#about {
+    margin-bottom: 5rem;
+}
+
+#capabilities {
+    margin-bottom: 5rem;
+}
+  

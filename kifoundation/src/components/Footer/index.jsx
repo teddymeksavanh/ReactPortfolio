@@ -12,10 +12,10 @@ import KiFoundationLogo from '../../assets/ki_foundation/ki_foundation_logo_shor
 
 const styles = {
     root: {
-        padding: "60px 30px"
+        padding: "0 30px 60px 30px"
     },
     divider: {
-        margin: "50px 0"
+        margin: "0 0 50px 0"
     },
     title: {
         color: "#3b426c"
@@ -40,12 +40,12 @@ class Footer extends React.Component {
         return (
             <div className={classes.root}>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
+                    <Divider className={classes.divider}/>
+                    <div className="row p-0 mb-5">
+                        <div className="col-md-12 p-0">
                             <img height="65" src={KiFoundationLogo} alt="Footer Ki Logo"/>
                         </div>
                     </div>
-                    <Divider className={classes.divider}/>
                     <div className="row">
                         <div className="col-md-4 mb-2">
                             <Typography className={classes.title} variant="h6"> The Ki Foundation </Typography>
