@@ -191,7 +191,7 @@ class Header extends React.Component {
                                 1984 should remain a book, not a reality.
                             </Typography>
                         </div>
-                        <div className="col-md-12 text-center pt-4">
+                        <div className="col-md-12 text-center pt-4 mb-5">
                             <MailchimpSubscribe 
                                 url={url}
                                 render={({ subscribe, status, message }) => (
