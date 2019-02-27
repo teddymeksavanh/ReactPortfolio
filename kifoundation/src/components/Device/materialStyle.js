@@ -5,6 +5,9 @@ const styles = theme => ({
         height: '90%',
         maxHeight: '550px'
     },
+    normalFont: {
+        fontWeight: 'normal'
+    },
     link: {
         marginRight: '1rem',
         color: '#292929',
@@ -26,7 +29,7 @@ const styles = theme => ({
         color: '#3b426c',
         marginBottom: '0.6rem',
         position: 'relative',
-        fontWeight: 800
+        // fontWeight: 800
         // '&::before': {
         //     content: `'_'`,
         //     position: 'absolute',

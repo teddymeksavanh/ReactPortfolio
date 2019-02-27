@@ -64,7 +64,7 @@ const styles = {
     margin: "0 0 0 4rem",
     position: "relative",
     whiteSpace: "nowrap",
-    textTransform: "uppercase",
+    // textTransform: "uppercase",
     '&:hover': {
       backgroundColor: "inherit"
     },

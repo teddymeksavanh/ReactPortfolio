@@ -82,7 +82,8 @@ const styles = {
         whiteSpace: "nowrap"
     },
     headerSubtitle: {
-        color: "#3b426c"
+        color: "#3b426c",
+        fontWeight: 'normal'
     },
     bullet: {
         display: 'inline-block',
@@ -105,7 +106,8 @@ const styles = {
     },
     headerTitleText: {
         color: "#3b426c",
-        marginBottom: "3rem"
+        marginBottom: "3rem",
+        fontWeight: 'normal'
     },
     title: {
         fontSize: 14,
@@ -181,7 +183,7 @@ class Header extends React.Component {
                             <Typography align="center" variant="h3" gutterBottom className={classes.headerTitle}>
                                 Privacy is Ki
                             </Typography>
-                            <Typography align="center" variant="subtitle1" gutterBottom className={classes.headerTitleText}>
+                            <Typography align="center" variant="h6" gutterBottom className={classes.headerTitleText}>
                                 Building an ecosystem for a truly decentralized internet, to protect your data and share value.
                             </Typography>
                         </div>

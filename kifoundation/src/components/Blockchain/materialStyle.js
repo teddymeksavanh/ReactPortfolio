@@ -22,11 +22,14 @@ const styles = theme => ({
             border: 'none'
         }
     },
+    fontNormal: {
+      fontWeight: 'normal'
+    },
     title: {
         color: '#3b426c',
         marginBottom: '0.6rem',
         position: 'relative',
-        fontWeight: 800
+        // fontWeight: 800
         // '&::before': {
         //     content: `'_'`,
         //     position: 'absolute',

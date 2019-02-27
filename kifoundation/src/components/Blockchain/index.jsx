@@ -57,16 +57,17 @@ class Blockchain extends React.Component {
         }
     }
     renderAboutContent = () => {
+        const { classes } = this.props;
         return (
             <div id="about" className="container p-0 mt-5">
                 <div className="row">
                     <div className="col-md-12 mb-4">
-                        <Typography align="justify" variant="subtitle2">
+                        <Typography className={classes.fontNormal} align="justify" variant="subtitle2">
                             The Ki Foundation is building a new blockchain that fulfils its objectives of enabling both (1) an open development ecosystem and decentralized marketplace for dApps as well as (2) a new resource sharing paradigm, where, anything with computational power, storage and connectivity can be monetized and leased in real-time with minimal effort from both the resource providers and the users, while maintaining its principles of privacy, security and fairness.
                         </Typography>
                     </div>
                     <div className="col-md-12">
-                        <Typography align="justify" variant="subtitle2">
+                        <Typography className={classes.fontNormal} align="justify" variant="subtitle2">
                             The approach of the Ki Foundation’s R&D team will result in a scalable and secure protocol that can deal with thousands of transactions per second using very low computational power but without sacrificing on the organisation’s fairness ethos and commitment to decentralisation.
                         </Typography>
                     </div>
@@ -82,7 +83,7 @@ class Blockchain extends React.Component {
             { name: 'Number 3', text: 'No centralization by using a normalized reputation score.', image: iconReputation, number: number3, classes: 'item col-md-4' },
         ];
         let porDOM = por.map(c => {
-            return <div className={c.classes}><div className="text-center"><img height="60" src={c.image} alt={c.name}/><div className="text"><Typography variant="subtitle1">{c.text}</Typography></div><div className="number"><img src={c.number} alt={c.name + ' Background'}/></div></div></div>
+            return <div className={c.classes}><div className="text-center"><img height="60" src={c.image} alt={c.name}/><div className="text"><Typography className={classes.fontNormal} variant="subtitle2">{c.text}</Typography></div><div className="number"><img src={c.number} alt={c.name + ' Background'}/></div></div></div>
         });
         return (
             <div id="capabilities" className="my-5 container">
@@ -116,7 +117,7 @@ class Blockchain extends React.Component {
                         </div>
                         <div className="col-md-8">
                             <div>
-                                <Typography className={classes.title + ' animated fadeInLeft'} variant="h2">The Ki Blockchain</Typography>
+                                <Typography className={classes.title + ' animated fadeInLeft'} variant="h3">The Ki Blockchain</Typography>
                                 <Typography variant="h5" className={classes.subtitle + ' animated fadeIn'}>A new scalable blockchain technology</Typography>
                                 <div className="mt-3">
                                     <Tabs

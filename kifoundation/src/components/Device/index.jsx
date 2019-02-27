@@ -57,9 +57,7 @@ class Device extends React.Component {
         this.setState({ value });
     }
     selectThisImage = (image) => {
-        // document.getElementById('slide-1-wrapper').classList.remove('fadeIn');
         this.setState({imageSelected: image});
-        // setTimeout(() => { document.getElementById('slide-1-wrapper').classList.add('fadeIn') }, 0);
     }
     renderContents = () => {
         const { value } = this.state;
@@ -72,16 +70,17 @@ class Device extends React.Component {
         }
     }
     renderAboutContent = () => {
+        const { classes } = this.props;
         return (
             <div id="about" className="container p-0 mt-5">
                 <div className="row">
                     <div className="col-md-12 mb-4">
-                        <Typography align="justify" variant="subtitle2">
+                        <Typography className={classes.normalFont} align="justify" variant="subtitle2">
                             The Ki Foundation has built a home device that utilises a new blockchain-based operating system and an open dApp store, both of which can never be leveraged to monitor, manipulate or monetise its occupants. Ki provides users with access to a vibrant and open ecosystem of applications and services without forcing them to relinquish control of their data.
                         </Typography>
                     </div>
                     <div className="col-md-12">
-                        <Typography align="justify" variant="subtitle2">
+                        <Typography className={classes.normalFont} align="justify" variant="subtitle2">
                             Utilising Ki's new Proof of Reputation consensus mechanism and scalable new blockchain, control and governance of the Ki ecosystem and the value arising from it will be shared across all of the network’s participants.
                         </Typography>
                     </div>
@@ -196,7 +195,7 @@ class Device extends React.Component {
         return (
             <div>
                 <div className="slide-1">
-                    <img id="slide-1-wrapper" className="mb-5 animated" height="300" src={imageSelected} alt="Ki Device Main"/>
+                    <img id="slide-1-wrapper" className="mb-5 animated fadeIn" height="300" src={imageSelected} alt="Ki Device Main"/>
                 </div>
                 <Divider className="margin-auto" style={{width: '100px', backgroundColor: '#0021f5', height: '2px'}}/>
                 <div className="slide-2">
@@ -221,7 +220,7 @@ class Device extends React.Component {
                         </div>
                         <div className="col-md-6">
                             <div>
-                                <Typography className={classes.title + ' animated fadeInLeft'} variant="h2">The Ki Device</Typography>
+                                <Typography className={classes.title + ' animated fadeInLeft'} variant="h3">The Ki Device</Typography>
                                 <Typography variant="h5" className={classes.subtitle + ' animated fadeIn'}>A decentralized smart Homepod</Typography>
                                 <div className="mt-3">
                                     <Tabs
