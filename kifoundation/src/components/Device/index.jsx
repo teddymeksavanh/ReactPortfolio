@@ -1,6 +1,7 @@
 // Services
 import React from 'react';
 import PropTypes from 'prop-types';
+import Slider from "react-slick";
 
 // Material
 import Tabs from '@material-ui/core/Tabs';
@@ -19,6 +20,8 @@ import { withStyles } from '@material-ui/core/styles';
 // Images
 import KiDevice from '../../assets/ki_foundation/Black_Front.png';
 import KiDeviceSide from '../../assets/ki_foundation/Black_Side.png';
+import KiDeviceBlackBack from '../../assets/ki_foundation/Black_Back.png';
+import KiDeviceWhiteBack from '../../assets/ki_foundation/White_Back.png';
 import KiDeviceWhiteSide from '../../assets/ki_foundation/device_side_white.png';
 import KiDeviceWhite from '../../assets/ki_foundation/device_front_white.png';
 import DimensionsSvg from './svg/dimensions.svg';
@@ -54,9 +57,9 @@ class Device extends React.Component {
         this.setState({ value });
     }
     selectThisImage = (image) => {
-        document.getElementById('slide-1-wrapper').classList.remove('fadeIn');
+        // document.getElementById('slide-1-wrapper').classList.remove('fadeIn');
         this.setState({imageSelected: image});
-        setTimeout(() => { document.getElementById('slide-1-wrapper').classList.add('fadeIn') }, 0);
+        // setTimeout(() => { document.getElementById('slide-1-wrapper').classList.add('fadeIn') }, 0);
     }
     renderContents = () => {
         const { value } = this.state;
@@ -74,12 +77,12 @@ class Device extends React.Component {
                 <div className="row">
                     <div className="col-md-12 mb-4">
                         <Typography align="justify" variant="subtitle2">
-                            &nbsp;&nbsp;&nbsp;The Ki Foundation has built a home device that utilises a new blockchain-based operating system and an open dApp store, both of which can never be leveraged to monitor, manipulate or monetise its occupants. Ki provides users with access to a vibrant and open ecosystem of applications and services without forcing them to relinquish control of their data.
+                            The Ki Foundation has built a home device that utilises a new blockchain-based operating system and an open dApp store, both of which can never be leveraged to monitor, manipulate or monetise its occupants. Ki provides users with access to a vibrant and open ecosystem of applications and services without forcing them to relinquish control of their data.
                         </Typography>
                     </div>
                     <div className="col-md-12">
                         <Typography align="justify" variant="subtitle2">
-                            &nbsp;&nbsp;&nbsp;Utilising Ki's new Proof of Reputation consensus mechanism and scalable new blockchain, control and governance of the Ki ecosystem and the value arising from it will be shared across all of the network’s participants.
+                            Utilising Ki's new Proof of Reputation consensus mechanism and scalable new blockchain, control and governance of the Ki ecosystem and the value arising from it will be shared across all of the network’s participants.
                         </Typography>
                     </div>
                 </div>
@@ -170,14 +173,25 @@ class Device extends React.Component {
         );
     }
     renderSlider = () => {
+        const settings = {
+            className: "center",
+            infinite: true,
+            centerPadding: "60px",
+            slidesToShow: 3,
+            dots: true,
+            speed: 500
+        };
         const { imageSelected } = this.state;
         const slides = [
             { name: 'Ki Device Side', image: KiDeviceSide },
             { name: 'Ki Device', image: KiDevice},
-            { name: 'Ki Device Side White', image: KiDeviceWhiteSide }
+            { name: 'Ki Device Back', image: KiDeviceBlackBack },
+            { name: 'Ki Device Side White', image: KiDeviceWhiteSide },
+            { name: 'Ki Device White', image: KiDeviceWhite},
+            { name: 'Ki Device Back White', image: KiDeviceWhiteBack }
         ];
         let slidesDOM = slides.map((s, index) => {
-            return <div key={index} onClick={() => this.selectThisImage(s.image)} className="mr-3 cursor-pointer slide-wrapper"><img src={s.image} alt={s.name}/></div>
+            return <div key={index}><img className="cursor-pointer" onClick={() => this.selectThisImage(s.image)} src={s.image} alt={s.name}/></div>
         });
         return (
             <div>
@@ -185,8 +199,10 @@ class Device extends React.Component {
                     <img id="slide-1-wrapper" className="mb-5 animated" height="300" src={imageSelected} alt="Ki Device Main"/>
                 </div>
                 <Divider className="margin-auto" style={{width: '100px', backgroundColor: '#0021f5', height: '2px'}}/>
-                <div className="slide-2 vertical-align">
-                    {slidesDOM}
+                <div className="slide-2">
+                    <Slider {...settings}>
+                        {slidesDOM}
+                    </Slider>
                 </div>
             </div>
         );
@@ -198,13 +214,19 @@ class Device extends React.Component {
             <div className={classes.root}>
                 <div className="container">
                     <div className="row device-wrapper">
-                        <div className="col-md-6" style={{marginTop: '120px'}}>
+                        <div className="d-block d-md-none col-md-6 text-center vertical-align">
+                            <div className="mt-5">
+                                {this.renderSlider()}
+                            </div>
+                        </div>
+                        <div className="col-md-6">
                             <div>
                                 <Typography className={classes.title + ' animated fadeInLeft'} variant="h2">The Ki Device</Typography>
                                 <Typography variant="h5" className={classes.subtitle + ' animated fadeIn'}>A decentralized smart Homepod</Typography>
                                 <div className="mt-3">
                                     <Tabs
                                         value={value}
+                                        centered
                                         onChange={this.handleChange}
                                         classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
                                         >
@@ -228,7 +250,7 @@ class Device extends React.Component {
                                 <div className="custom-content">{this.renderContents()}</div>
                             </div>
                         </div>
-                        <div className="col-md-6 text-center vertical-align">
+                        <div className="d-none d-md-block col-md-6 text-center vertical-align">
                             <div className="mt-5">
                                 {this.renderSlider()}
                             </div>

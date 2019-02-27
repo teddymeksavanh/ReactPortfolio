@@ -87,7 +87,7 @@ const styles = theme => ({
         textTransform: 'initial',
         minWidth: 72,
         fontWeight: theme.typography.fontWeightRegular,
-        marginRight: theme.spacing.unit * 4,
+        width: '33.33%',
         fontFamily: [
           '-apple-system',
           'BlinkMacSystemFont',

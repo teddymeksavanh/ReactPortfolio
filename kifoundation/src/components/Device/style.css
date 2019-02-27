@@ -9,6 +9,7 @@
 
 .device-wrapper{
     height: 100vh;
+    margin-top: 120px;
 }
 
 @media (max-height: 610px) {
@@ -54,6 +55,7 @@
     }
     .device-wrapper{
         height: auto;
+        margin-top: 70px;
     }
 }
 
@@ -161,17 +163,21 @@
 #capabilities {
     margin-bottom: 5rem;
 }
+
+.slide-2 {
+    margin-bottom: 5rem;
+}
   
 .slide-2 img {
-    height: 80px;
+    /* height: 80px;
     margin: 3rem auto;
     padding: 10px 20px;
     border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 2px;
+    border-radius: 2px; */
 }
 
 .slide-1 img {
-    margin: 0 auto;
+    /* margin: 0 auto; */
 }
 
 .margin-auto {
@@ -179,5 +185,5 @@
 }
 
 .slide-wrapper:last-child {
-    margin-right: 0 !important;
+    /* margin-right: 0 !important; */
 }

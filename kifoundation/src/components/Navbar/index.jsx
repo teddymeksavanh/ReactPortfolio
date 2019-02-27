@@ -177,16 +177,16 @@ class Navbar extends React.Component {
             </AppBar>
             <div className={classes.listWrapper}>
               <List component="nav">
+                <ListItemLink button href="/">
+                  <ListItemText align="center" primary="Home" />
+                </ListItemLink>
+                <Divider/>
                 <ListItemLink button href="/team">
                   <ListItemText align="center" primary="Team" />
                 </ListItemLink>
                 <Divider/>
                 <ListItemLink button href="/contact">
                   <ListItemText align="center" primary="Contact Us" />
-                </ListItemLink>
-                <Divider/>
-                <ListItemLink button href="https://domo.ki" target="_blank">
-                  <ListItemText align="center" primary="Ki Device" />
                 </ListItemLink>
               </List>
             </div>
@@ -204,6 +204,7 @@ class Navbar extends React.Component {
                     <div className={classes.growRight}>
                       {/* <Link className={classes.link} to="/whitepaper"><Button className={classes.button}>Whitepaper</Button></Link> */}
                       {/* <NavLink to="/device"><span className={classes.button}>Device</span></NavLink> */}
+                      <NavLink to="/"><span className={classes.button}>Home</span></NavLink>
                       <NavLink to="/team"><span className={classes.button}>Team</span></NavLink>
                       <NavLink to="/contact"><span className={classes.button}>Contact Us</span></NavLink>
                     </div>

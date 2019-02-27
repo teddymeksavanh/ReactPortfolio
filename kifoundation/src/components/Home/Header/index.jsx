@@ -12,7 +12,7 @@ import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt'
 import { withStyles } from '@material-ui/core/styles';
 
 // Images
-// import KiDevice from '../../../assets/home/markets_illustration_h.gif';
+import AnimatedOctagon from '../../../assets/ki_foundation/animated_octagon.png';
 import KiDevice from '../../../assets/ki_foundation/domo_device_side.png';
 import KiBlockchain from '../../../assets/home/blockchain.png';
 import KiWallet from '../../../assets/home/launch_illustration_h.gif';
@@ -39,7 +39,13 @@ const styles = {
         },
         '&:hover .card-image': {
             top: -40
+        },
+        '&:hover .header-kd-item': {
+            top: -70
         }
+    },
+    headerKDItem: {
+        top: -50
     },
     cardImageWrapper: {
         height: 140,
@@ -76,7 +82,7 @@ const styles = {
         whiteSpace: "nowrap"
     },
     headerSubtitle: {
-        color: "#3b426c",
+        color: "#3b426c"
     },
     bullet: {
         display: 'inline-block',
@@ -140,8 +146,8 @@ class Header extends React.Component {
     renderCards = () => {
         const { classes } = this.props;
         const cardsData = [
-            { name: "Ki Device", image: KiDevice, href: "/device" },
-            { name: "Ki Blockchain", image: KiBlockchain, href: "blockchain" },
+            { name: "Ki Device", image: AnimatedOctagon, href: "/device", height: '200', customClassname: classes.headerKDItem + ' header-kd-item' },
+            { name: "Ki Blockchain", image: KiBlockchain, href: "blockchain", height: '150', customClassname: '' },
             // { name: "Ki Wallet", image: KiWallet, action: "test" },
             // { name: "Ki Ecosystem", image: KiEcosystem, action: "test" }            
         ];
@@ -152,7 +158,7 @@ class Header extends React.Component {
                         <Card key={key} className={classes.card}>
                             <CardContent>
                                 <div className={classes.cardImageWrapper}>
-                                    <img className="card-image" src={cd.image} alt={cd.image} />
+                                    <img height={cd.height} className={cd.customClassname + ' card-image'} src={cd.image} alt={cd.image} />
                                 </div>
                                 <Typography className={classes.cardTitle} variant="h6"> {cd.name} </Typography>
                                 <button type="button" className={classes.cardButton} size="small">Learn More <ArrowRightAlt className={classes.arrowRight}/></button>
