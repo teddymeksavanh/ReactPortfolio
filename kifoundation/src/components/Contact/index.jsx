@@ -35,9 +35,9 @@ class Contact extends React.Component {
         const { classes } = this.props;
         const url = "https://gen.us17.list-manage.com/subscribe/post?u=3865106d3d479f1d2e1ec8400&amp;id=d7cfb8a289";
         return (
-            <div className="pt-5 h-100 contact-page">
-                <div className="container px-4 pt-5">
-                    <div className="row justify-content-center pt-5">
+            <div className="vertical-align contact-page">
+                <div className="container px-4">
+                    <div className="row justify-content-center">
                         <div className="col-md-6">
                             <Typography className={classes.title} align="center" variant="h2">
                                 Contact Us
@@ -63,7 +63,7 @@ class Contact extends React.Component {
                                     <button type="submit" className="btn btn-primary primary-bg primary-bg-hover no-border contact-submit-btn">Submit</button>
                                 </div>
                             </form> */}
-                            <div className="vertical-align pt-3">
+                            <div className="vertical-align pt-3 mb-5">
                                 <a a href="mailto:contact@gen.ki"><button className="btn btn-primary primary-bg primary-bg-hover no-border contact-submit-btn">Send an email</button></a>
                             </div>
                         </div>
