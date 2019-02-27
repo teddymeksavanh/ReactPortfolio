@@ -10,6 +10,12 @@
 .device-wrapper{
     height: 100vh;
 }
+
+@media (max-height: 610px) {
+    .device-wrapper{
+        height: auto;
+    }
+}
   
 .boxshadow {
     background: #fff;

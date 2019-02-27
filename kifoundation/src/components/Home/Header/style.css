@@ -20,6 +20,12 @@
     height: 100vh;
 }
 
+@media (max-height: 610px) {
+    .home-wrapper{
+        height: auto;
+    }
+}
+
 @media (max-width: 768px) {
     #header-component {
         display: block;
@@ -37,4 +43,3 @@
         margin-top: 7rem;
     }
 }
-
