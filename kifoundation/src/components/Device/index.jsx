@@ -1,10 +1,8 @@
 // Services
 import React from 'react';
 import PropTypes from 'prop-types';
-import Scrollchor from 'react-scrollchor';
 
 // Material
-import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -19,139 +17,69 @@ import ZigbeeIcon from '@material-ui/icons/DeviceHub';
 import { withStyles } from '@material-ui/core/styles';
 
 // Images
-import KiDevice from '../../assets/ki_foundation/domo_device.png';
+import KiDevice from '../../assets/ki_foundation/Black_Front.png';
+import KiDeviceSide from '../../assets/ki_foundation/Black_Side.png';
+import KiDeviceWhiteSide from '../../assets/ki_foundation/device_side_white.png';
+import KiDeviceWhite from '../../assets/ki_foundation/device_front_white.png';
+import DimensionsSvg from './svg/dimensions.svg';
+import ColorsSvg from './svg/colors.svg';
+import AudioSvg from './svg/audio.svg';
+import WirelessSvg from './svg/wireless.svg';
+import OperatingSvg from './svg/operating.svg';
+import PowerSvg from './svg/power.svg';
+import PortSvg from './svg/port.svg';
+import SpeakerSvg from './svg/speaker.svg';
 
 import './style.css';
+import styles from './materialStyle.js';
+import { Divider } from '@material-ui/core';
 
-const styles = theme => ({
-    root: {
-      flexGrow: 1,
-      backgroundColor: theme.palette.background.paper,
-    //   marginTop: "5rem",
-      marginBottom: "5rem",
-      height: "100%"
-    },
-    tabsRoot: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    //   position: 'absolute',
-    //   bottom: 0,
-    //   paddingBottom: '50px'
-    },
-    tabsIndicator: {
-      backgroundColor: '#0021f5',
-    },
-    tabRoot: {
-      display: 'flex',
-      minWidth: 72,
-      fontWeight: theme.typography.fontWeightRegular,
-      marginRight: theme.spacing.unit * 4,
-      fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-      '&:hover': {
-        color: '#0021f5',
-        opacity: 1,
-      },
-      '&$tabSelected': {
-        color: '#0021f5',
-        fontWeight: theme.typography.fontWeightMedium,
-      },
-      '&:focus': {
-        color: '#0021f5',
-      },
-    },
-    tabSelected: {},
-    typography: {
-      padding: theme.spacing.unit * 3,
-    },
-    octagon: {
-        // height: "30vh",
-        // maxHeight: "450px"
-        objectFit: 'cover',
-        padding: '50px',
-        height: '90%',
-        maxHeight: '850px'
-        // width: '100%'
-    },
-    link: {
-        margin: '0 1rem',
-        color: '#292929',
-        cursor: 'pointer',
-        fontSize: '11px',
-        opacity: 0.7,
-        textTransform: 'uppercase',
-        '&:hover': {
-            color: '#0021f5 !important',
-            textDecoration: 'none'
-        }
-    },
-    title: {
-        color: '#3b426c',
-        marginBottom: '0.6rem',
-        position: 'relative',
-        '&::before': {
-            content: `'_'`,
-            position: 'absolute',
-            left: "-40px",
-            top: "-7px",
-            color: "#0021f5"
-        }
-    },
-    subtitle: {
-        color: '#3b426c',
-        marginBottom: '2rem'
-    },
-    card: {
-        width: 'fit-content',
-        textAlign: 'center',
-        minWidth: '150px',
-        margin: '20px 0'
-    },
-    cardIcon: {
-        marginBottom: '15px'
-    }
-});
-  
 class Device extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            value: 2,
+            nav1: null,
+            nav2: null,
+            imageSelected: KiDevice
+        }
     }
-    renderTabsContent = () => {
-        return (
-            <div>
-                {this.renderAboutContent()}
-                {this.renderCapabilitiesContent()}
-                {this.renderSpecsContent()}
-            </div>
-        );
+    componentDidMount() {
+        this.setState({
+          nav1: this.slider1,
+          nav2: this.slider2
+        });
+    }
+    handleChange = (event, value) => {
+        this.setState({ value });
+    }
+    selectThisImage = (image) => {
+        document.getElementById('slide-1-wrapper').classList.remove('fadeIn');
+        this.setState({imageSelected: image});
+        setTimeout(() => { document.getElementById('slide-1-wrapper').classList.add('fadeIn') }, 0);
+    }
+    renderContents = () => {
+        const { value } = this.state;
+        if ( value == 1 ) {
+            return this.renderCapabilitiesContent()
+        } else if ( value == 2 ) {
+            return this.renderSpecsContent()
+        } else {
+            return this.renderAboutContent()
+        }
     }
     renderAboutContent = () => {
         return (
-            <div id="about" className="container">
-                <Typography className="mb-5" variant="h4">About</Typography>
+            <div id="about" className="container p-0 mt-5">
                 <div className="row">
-                    <div className="col-md-1 mr-3">
-                        <img src={KiDevice} alt="About Ki device" height="130"/>
-                    </div>
-                    <div className="col-md-5">
+                    <div className="col-md-12 mb-4">
                         <Typography align="justify" variant="subtitle2">
-                            The Ki Foundation has built a home device that utilises a new blockchain-based operating system and an open dApp store, both of which can never be leveraged to monitor, manipulate or monetise its occupants. Ki provides users with access to a vibrant and open ecosystem of applications and services without forcing them to relinquish control of their data.
+                            &nbsp;&nbsp;&nbsp;The Ki Foundation has built a home device that utilises a new blockchain-based operating system and an open dApp store, both of which can never be leveraged to monitor, manipulate or monetise its occupants. Ki provides users with access to a vibrant and open ecosystem of applications and services without forcing them to relinquish control of their data.
                         </Typography>
                     </div>
-                    <div className="col-md-5">
+                    <div className="col-md-12">
                         <Typography align="justify" variant="subtitle2">
-                            Utilising Ki's new Proof of Reputation consensus mechanism and scalable new blockchain, control and governance of the Ki ecosystem and the value arising from it will be shared across all of the network’s participants.
+                            &nbsp;&nbsp;&nbsp;Utilising Ki's new Proof of Reputation consensus mechanism and scalable new blockchain, control and governance of the Ki ecosystem and the value arising from it will be shared across all of the network’s participants.
                         </Typography>
                     </div>
                 </div>
@@ -159,173 +87,80 @@ class Device extends React.Component {
         );
     }
     renderCapabilitiesContent = () => {
-        const { classes } = this.props;
+        const { classes } = this.props;
+        const capabilities = [
+            { name: 'Processor', icon: <ProcessorIcon className={classes.cardIcon}/> },
+            { name: 'Hard Drive', icon: <HardDriveIcon className={classes.cardIcon}/> },
+            { name: 'Bluetooth', icon: <BluetoothIcon className={classes.cardIcon}/> },
+            { name: 'Wifi', icon: <WifiIcon className={classes.cardIcon}/> },
+            { name: 'Z-wave', icon: <ZWaveIcon className={classes.cardIcon}/> },
+            { name: 'Zigbee', icon: <ZigbeeIcon className={classes.cardIcon}/> }
+        ];
+        let capabilitiesDOM = capabilities.map(c => {
+            return (<div className="col-md-4 col-sm-4 col-xs-4 px-0"><div className="pl-0 text-center mb-4">{c.icon}<Typography variant="subtitle1" className={classes.capabilitiesText} align="center">{c.name}</Typography></div></div>);
+        });
         return (
-            <div id="capabilities" className="mb-5 container">
-                <Typography className="mb-4 d-block" variant="h4">Capabilities</Typography>
-                <div className="container">
-                    <div className="row justify-content-center">
-                        {this.renderCapabilitiesIcons()}
+            <div id="capabilities" className="my-5 container">
+                <div className="container pl-0">
+                    <div className="row pl-0">
+                        {capabilitiesDOM}
                     </div>
                 </div>
             </div>
         );
     }
-    renderCapabilitiesIcons = () => {
-        const { classes } = this.props;
-        const capabilities = [
-            {name: 'Processor', icon: <ProcessorIcon className={classes.cardIcon}/> },
-            {name: 'Hard Drive', icon: <HardDriveIcon className={classes.cardIcon}/> },
-            {name: 'Bluetooth', icon: <BluetoothIcon className={classes.cardIcon}/> },
-            {name: 'Wifi', icon: <WifiIcon className={classes.cardIcon}/> },
-            {name: 'Z-wave', icon: <ZWaveIcon className={classes.cardIcon}/> },
-            {name: 'Zigbee', icon: <ZigbeeIcon className={classes.cardIcon}/> }
-        ];
-        let capabilitiesDOM = capabilities.map(c => {
-            return (<div className="col-md-2 pl-0"><Card className={classes.card}><CardContent>{c.icon}<Typography variant="h6" align="center">{c.name}</Typography></CardContent></Card></div>);
-        });
-        return capabilitiesDOM;
-    }
     renderSpecsContent = () => {
+        const specs = [
+            { title: 'Dimensions & Weight', subtitle: '100mm Diam ● 162.3 mm Height', icon: DimensionsSvg },
+            { title: 'colors', subtitle: 'White ● Slate fabric', icon: ColorsSvg },
+            { title: 'Supported Audio Formats', subtitle: 'HE-AAC ● LC-AAC+', icon: AudioSvg },
+            { title: 'Wireless', subtitle: 'Wi-fi 802.11b/g/n/ac ● Zigbee ● Z-wave ● Bluetooth®', icon: WirelessSvg }
+        ];
+        const specs2 = [
+            { title: 'Speaker', subtitle: '360° sound with sub-woofer.', icon: SpeakerSvg },
+            { title: 'Power', subtitle: '16.5V, 2A', icon: PowerSvg },
+            { title: 'Ports Connectors', subtitle: 'DC power jack', icon: PortSvg },
+            { title: 'Supported Operating Systems', subtitle: 'Genki OS', icon: OperatingSvg }
+        ]
+        let specsDOM = specs.map(s => {
+            return (
+                <li>
+                    <div className="list-icons--icon vertical-align">
+                        <img src={s.icon} alt={s.title}/>
+                    </div>
+                    <div>
+                        <h3>{s.title}</h3>
+                        <p className="mb-0">{s.subtitle}</p>
+                    </div>
+                </li>
+            );
+        });
+        let specsDOM2 = specs2.map(s => {
+            return (
+                <li>
+                    <div className="list-icons--icon vertical-align">
+                        <img src={s.icon} alt={s.title}/>
+                    </div>
+                    <div>
+                        <h3>{s.title}</h3>
+                        <p className="mb-0">{s.subtitle}</p>
+                    </div>
+                </li>
+            );
+        });
         return (
-            <div id="specifications" className="mb-5 container">
-                <Typography className="mb-5" variant="h4">Specs</Typography>
+            <div id="specifications" className="mb-5 mt-5 container">
                 <section className="genki-specs p-0" id="genki-specs">
                     <div className="container p-0">
                         <div className="row">
-                            <div className="col-md-6 col-lg-5 mb-4">
-                                <div className="boxshadow">
-                                    <div className="icon-octogon">
-                                        <svg width="24px" height="30px" viewBox="0 0 24 30" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                            <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                <g id="iconspecs" fill="#292929">
-                                                    <path d="M0,0 L24,0 L24,30 L0,30 L0,0 Z M5,4 C4.44771525,4 4,4.44771525 4,5 C4,5.55228475 4.44771525,6 5,6 L19,6 C19.5522847,6 20,5.55228475 20,5 C20,4.44771525 19.5522847,4 19,4 L5,4 Z M5,8 C4.44771525,8 4,8.44771525 4,9 C4,9.55228475 4.44771525,10 5,10 L19,10 C19.5522847,10 20,9.55228475 20,9 C20,8.44771525 19.5522847,8 19,8 L5,8 Z M5,12 C4.44771525,12 4,12.4477153 4,13 C4,13.5522847 4.44771525,14 5,14 L19,14 C19.5522847,14 20,13.5522847 20,13 C20,12.4477153 19.5522847,12 19,12 L5,12 Z M5,16 C4.44771525,16 4,16.4477153 4,17 C4,17.5522847 4.44771525,18 5,18 L9,18 C9.55228475,18 10,17.5522847 10,17 C10,16.4477153 9.55228475,16 9,16 L5,16 Z"></path>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </div>
-                                    <h2 className="txtlimit">Specifications</h2>
-                                    <p className="txtlimit">Technical details of the Octagon</p>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-7">
+                            <div className="col-md-6 col-sm-12 col-xs-12 pl-0 custom-specdom">
                                 <ul className="boxshadow xd list-icons p-0 no-list-style">
-                                    <li style={{height: "auto"}}>
-                                        <div className="list-icons--icon">
-                                            <svg width="27px" height="31px" viewBox="0 0 27 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="icondimension" fill="#292929">
-                                                        <g>
-                                                            <path d="M13.6947,30.7305 L0.8937,22.9385 L0.8937,9.0795 L13.6947,16.3145 L26.4967,9.0795 L26.4967,22.9385 L13.6947,30.7305 Z M0.8935,9.0791 L13.6945,0.7301 C13.6945,0.7301 22.0435,6.2961 26.4965,9.0791 L13.6945,16.3141 L0.8935,9.0791 Z"></path>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h3>Dimensions &amp; Weight</h3>
-                                        <p>100mm Diam ● 162.3 mm Height</p>
-                                    </li>
-                                    <li style={{height: "auto"}}>
-                                        <div className="list-icons--icon">
-                                            <svg width="24px" height="30px" viewBox="0 0 24 30" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="iconcolors2" fill="#292929">
-                                                        <path d="M9.419,22.326 C10.575,22.326 11.512,23.263 11.512,24.419 C11.512,25.574 10.575,26.512 9.419,26.512 C8.263,26.512 7.326,25.574 7.326,24.419 C7.326,23.263 8.263,22.326 9.419,22.326 M5.756,15.698 C7.008,15.698 8.023,16.713 8.023,17.965 C8.023,19.218 7.008,20.232 5.756,20.232 C4.504,20.232 3.489,19.218 3.489,17.965 C3.489,16.713 4.504,15.698 5.756,15.698 M6.977,7.326 C8.326,7.326 9.419,8.419 9.419,9.767 C9.419,11.116 8.326,12.209 6.977,12.209 C5.628,12.209 4.535,11.116 4.535,9.767 C4.535,8.419 5.628,7.326 6.977,7.326 M13.605,3.139 C14.954,3.139 16.047,4.233 16.047,5.582 C16.047,6.93 14.954,8.023 13.605,8.023 C12.256,8.023 11.163,6.93 11.163,5.582 C11.163,4.233 12.256,3.139 13.605,3.139 M13.605,0 C4.273,0 0,7.675 0,14.651 C0,21.279 3.749,29.823 10.117,30 C12.243,30 15.349,28.954 16.396,19.884 C17.442,11.512 23.721,13.954 23.721,8.023 C23.721,3.837 19.535,0 13.605,0"></path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h3>colors</h3>
-                                        <p>White &#8226; Slate fabric</p>
-                                    </li>
-                                    <li style={{height: "auto"}}>
-                                        <div className="list-icons--icon">
-                                            <svg width="31px" height="31px" viewBox="0 0 31 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="iconvolume" fill="#292929">
-                                                        <g>
-                                                            <path d="M0.688,30.999 L0.688,0.999 L8.496,0.999 L8.496,30.999 L0.688,30.999 Z M11.921,30.999 L11.921,20.389 L19.729,20.389 L19.729,30.999 L11.921,30.999 Z M22.88,30.999 L22.88,13.818 L30.688,13.818 L30.688,30.999 L22.88,30.999 Z"></path>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h3>Supported Audio Formats</h3>
-                                        <p>HE-AAC &#8226; LC-AAC+</p>
-                                    </li>
-                                    <li style={{height: "auto"}}>
-                                        <div className="list-icons--icon">
-                                            <svg width="31px" height="21px" viewBox="0 0 31 21" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="iconwireless" fill="#292929">
-                                                        <g>
-                                                            <path d="M5.457,2.5419 C1.638,7.1459 1.641,13.9009 5.466,18.5029 C5.882,19.0039 5.869,19.7319 5.414,20.1979 L5.394,20.2179 C4.882,20.7419 4.019,20.7289 3.548,20.1669 C-1.108,14.5979 -1.105,6.4629 3.558,0.8969 C4.025,0.3399 4.879,0.3219 5.394,0.8359 C5.858,1.3009 5.876,2.0359 5.457,2.5419 Z M8.9799,5.2255 C9.4129,5.6585 9.4679,6.3385 9.1139,6.8365 C8.3389,7.9255 7.9519,9.2105 7.9519,10.4965 C7.9519,11.7815 8.3389,13.0665 9.1139,14.1545 C9.4679,14.6535 9.4129,15.3335 8.9799,15.7665 C8.4379,16.3085 7.5269,16.2525 7.0819,15.6285 C4.9029,12.5795 4.9029,8.4135 7.0819,5.3635 C7.5269,4.7395 8.4379,4.6835 8.9799,5.2255 Z M24.7231,0.8358 C25.2371,0.3218 26.0921,0.3398 26.5591,0.8978 C31.2221,6.4628 31.2251,14.5978 26.5691,20.1668 C26.0981,20.7298 25.2351,20.7418 24.7231,20.2178 L24.7031,20.1978 C24.2481,19.7318 24.2341,19.0038 24.6511,18.5028 C28.4761,13.9008 28.4791,7.1468 24.6601,2.5418 C24.2401,2.0358 24.2581,1.3008 24.7231,0.8358 Z M21.1371,5.2255 C21.6791,4.6835 22.5891,4.7395 23.0341,5.3635 C25.2141,8.4135 25.2141,12.5795 23.0341,15.6285 C22.5891,16.2525 21.6791,16.3085 21.1371,15.7665 C20.7041,15.3335 20.6481,14.6535 21.0031,14.1545 C21.7771,13.0665 22.1641,11.7815 22.1641,10.4965 C22.1641,9.2105 21.7771,7.9255 21.0031,6.8365 C20.6481,6.3385 20.7041,5.6585 21.1371,5.2255 Z M10.8901,10.5175 C10.8901,8.1925 12.7921,6.2895 15.1171,6.2895 C17.4421,6.2895 19.3441,8.1925 19.3441,10.5175 C19.3441,12.8415 17.4421,14.7445 15.1171,14.7445 C12.7921,14.7445 10.8901,12.8415 10.8901,10.5175 Z" ></path>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h3>Wireless</h3>
-                                        <p>Wi-fi 802.11b/g/n/ac ● Zigbee ● Z-wave ● Bluetooth®</p>
-                                    </li>
-                                    <li style={{height: "auto"}}>
-                                        <div className="list-icons--icon">
-                                            <svg width="30px" height="27px" viewBox="0 0 30 27" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="iconnoise2" fill="#292929">
-                                                        <path d="M21.3808263,0.108541526 C24.5465728,1.5762899 27.0935699,4.09103711 28.5785683,7.21778364 C32.0915644,14.6135254 28.868818,23.4222657 21.3808263,26.8917618 C20.5243272,27.1947615 19.5725783,26.8467619 19.1218288,26.0667627 C18.6080794,25.1787637 18.920829,24.047015 19.819328,23.5407655 C22.1638254,22.4420167 24.0523233,20.5767688 25.1638221,18.2622714 C27.8263191,12.7167775 25.4338218,6.09053489 19.819328,3.46103781 C19.0303289,3.0155383 18.6778293,2.07503934 18.9838289,1.22979028 C19.3325785,0.266041351 20.4058274,-0.235708092 21.3808263,0.108541526 Z M6.56249272,7.01648386 L12.9614856,0.918990627 C13.3897351,0.443491155 14.1277343,0.401491201 14.6092338,0.824490732 C14.8597335,1.04424049 15.0022334,1.36074014 15.0007334,1.69223977 L15.0007334,25.3044636 C15.0044834,25.9404629 14.4847339,26.4602123 13.8397346,26.4639623 C13.504485,26.4662123 13.1842354,26.3252124 12.9614856,26.0777127 L6.56249272,19.9802195 L2.81249688,19.9802195 C1.2592486,19.9802195 0,18.7359709 0,17.2022226 L0,9.79448078 C0,8.25998248 1.2592486,7.01648386 2.81249688,7.01648386 L6.56249272,7.01648386 Z M20.3490524,18.6841459 C20.1825526,18.8476457 19.9590529,18.9436456 19.7235531,18.9526456 C19.2060537,18.9721456 18.7703042,18.573896 18.7508042,18.0631466 L18.7508042,8.93340673 C18.7598042,8.70090699 18.8573041,8.48040724 19.0230539,8.31540742 C19.3890535,7.95315782 19.9823028,7.95240782 20.3490524,8.31240742 C23.2080492,11.1931542 23.2080492,15.8033991 20.3490524,18.6841459 Z"></path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h3>Speaker</h3>
-                                        <p>360° sound with sub-woofer.</p>
-                                    </li>
-                                    <li style={{height: "auto"}}>
-                                        <div className="list-icons--icon">
-                                            <svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="iconpower" fill="#292929">
-                                                        <g>
-                                                            <path d="M14.573,17.846 C13.704,17.846 13,17.142 13,16.273 L13,1.574 C13,0.704 13.704,0 14.573,0 C15.442,0 16.147,0.704 16.147,1.574 L16.147,16.273 C16.147,17.142 15.442,17.846 14.573,17.846 Z M25.8242383,4.92459793 C31.1492383,11.0625979 30.4912383,20.3545979 24.3542383,25.6785979 C18.2172383,31.0035979 8.92523832,30.3455979 3.60023832,24.2085979 C-1.72476168,18.0705979 -1.06676168,8.77959793 5.07023832,3.45459793 C5.72623832,2.88459793 6.72023832,2.95459793 7.29023832,3.61159793 C7.86023832,4.26659793 7.79023832,5.26059793 7.13423832,5.83059793 C4.60223832,8.02759793 3.14823832,11.2145979 3.14823832,14.5675979 C3.14823832,20.9445979 8.33323832,26.1315979 14.7112383,26.1315979 C21.0882383,26.1315979 26.2762383,20.9435979 26.2762383,14.5665979 C26.2782383,11.1815979 24.7952383,7.96659793 22.2202383,5.76959793 C21.5592383,5.20459793 21.4812383,4.21159793 22.0462383,3.55159793 C22.6102383,2.89059793 23.6032383,2.81259793 24.2642383,3.37759793 C24.8222383,3.85359793 25.3442383,4.37059793 25.8242383,4.92459793 Z"></path>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h3>Power</h3>
-                                        <p>16.5V, 2A</p>
-                                    </li>
-                                    <li style={{height: "auto"}}>
-                                        <div className="list-icons--icon">
-                                            <svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="iconconnect2" fill="#292929">
-                                                        <path d="M20.5857864,9 L10,9 C9.44771525,9 9,9.44771525 9,10 C9,10.5522847 9.44771525,11 10,11 L20.5857864,11 L18.2928932,13.2928932 C17.9023689,13.6834175 17.9023689,14.3165825 18.2928932,14.7071068 C18.6834175,15.0976311 19.3165825,15.0976311 19.7071068,14.7071068 L23.7071068,10.7071068 C23.8880712,10.5261424 24,10.2761424 24,10 C24,9.72385763 23.8880712,9.47385763 23.7071068,9.29289322 L19.7071068,5.29289322 C19.3165825,4.90236893 18.6834175,4.90236893 18.2928932,5.29289322 C17.9023689,5.68341751 17.9023689,6.31658249 18.2928932,6.70710678 L20.5857864,9 Z M6.29289322,20.7071068 L10.2928932,24.7071068 C10.6834175,25.0976311 11.3165825,25.0976311 11.7071068,24.7071068 C12.0976311,24.3165825 12.0976311,23.6834175 11.7071068,23.2928932 L9.41421356,21 L20,21 C20.5522847,21 21,20.5522847 21,20 C21,19.4477153 20.5522847,19 20,19 L9.41421356,19 L11.7071068,16.7071068 C12.0976311,16.3165825 12.0976311,15.6834175 11.7071068,15.2928932 C11.3165825,14.9023689 10.6834175,14.9023689 10.2928932,15.2928932 L6.29289322,19.2928932 C6.11192881,19.4738576 6,19.7238576 6,20 C6,20.2761424 6.11192881,20.5261424 6.29289322,20.7071068 Z M7.61513692,1.17157288 C8.36528243,0.421427361 9.38269808,1.97123475e-15 10.443564,1.77635684e-15 L19.556302,3.55271368e-15 C20.6171558,3.357838e-15 21.6345608,0.421417706 22.3847043,1.17154801 L28.8284023,7.61513265 C29.578563,8.36528019 30,9.3827065 30,10.4435846 L30,19.5562814 C30,20.6171474 29.5785726,21.6345631 28.8284271,22.3847086 L22.3847086,28.8284271 C21.6345631,29.5785726 20.6171474,30 19.5562814,30 L10.4435846,30 C9.3827065,30 8.36528019,29.578563 7.61513265,28.8284023 L1.17154801,22.3847043 C0.421417706,21.6345608 1.90627396e-15,20.6171558 1.77635684e-15,19.556302 L8.8817842e-16,10.443564 C7.5825981e-16,9.38269808 0.421427361,8.36528243 1.17157288,7.61513692 L7.61513692,1.17157288 Z"></path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h3>Ports &amp; Connectors</h3>
-                                        <p>DC power jack"</p>
-                                    </li>
-                                    <li style={{height: "auto"}}>
-                                        <div className="list-icons--icon">
-                                            <svg width="31px" height="26px" viewBox="0 0 31 26" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                                    <g id="iconsettings">
-                                                        <g >
-                                                            <path d="M24.246,9.7256 C23.134,10.2056 21.843,9.6946 21.362,8.5826 C20.882,7.4706 21.393,6.1796 22.505,5.6996 C23.617,5.2186 24.908,5.7296 25.389,6.8416 L25.39,6.8446 C25.869,7.9546 25.359,9.2446 24.249,9.7256 L24.246,9.7256 Z M30.505,4.6276 C30.277,4.0996 29.647,3.6986 29.104,3.7366 C28.562,3.7746 27.934,3.5626 27.656,3.2976 C27.378,3.0336 27.153,2.4066 27.173,1.8606 C27.194,1.3156 26.773,0.7036 26.237,0.4896 C25.7,0.2766 24.974,0.4386 24.617,0.8466 C24.26,1.2546 23.661,1.5546 23.281,1.5666 C22.9,1.5786 22.294,1.2926 21.926,0.8956 C21.557,0.4966 20.824,0.3556 20.296,0.5826 C19.767,0.8116 19.364,1.4406 19.402,1.9836 C19.439,2.5266 19.227,3.1546 18.963,3.4326 C18.698,3.7096 18.071,3.9326 17.529,3.9146 C16.986,3.8976 16.371,4.3166 16.158,4.8536 C15.944,5.3906 16.106,6.1166 16.515,6.4726 C16.923,6.8296 17.223,7.4286 17.234,7.8076 C17.246,8.1866 16.962,8.7936 16.563,9.1636 C16.163,9.5316 16.02,10.2626 16.251,10.7936 C16.482,11.3256 17.109,11.7266 17.651,11.6886 C18.194,11.6506 18.822,11.8626 19.1,12.1266 C19.378,12.3926 19.603,13.0156 19.583,13.5616 C19.562,14.1076 19.982,14.7186 20.521,14.9326 C21.059,15.1456 21.784,14.9836 22.141,14.5756 C22.498,14.1666 23.095,13.8676 23.475,13.8616 C23.856,13.8556 24.462,14.1376 24.833,14.5366 C25.205,14.9336 25.936,15.0706 26.465,14.8416 C26.993,14.6136 27.397,13.9876 27.359,13.4446 C27.321,12.9016 27.533,12.2736 27.798,11.9956 C28.063,11.7176 28.687,11.4956 29.233,11.5166 C29.779,11.5386 30.391,11.1176 30.604,10.5796 C30.818,10.0406 30.659,9.3166 30.247,8.9556 C29.836,8.5966 29.536,8.0046 29.526,7.6206 C29.516,7.2356 29.8,6.6336 30.201,6.2656 C30.608,5.8236 30.726,5.1866 30.505,4.6276 Z" fill="#292929"></path>
-                                                            <path d="M13.053147,18.2332027 C11.2828482,18.9994831 9.22811286,18.1843815 8.46183245,16.4140827 C7.69661336,14.6437839 8.51171497,12.5890486 10.2820138,11.8238295 C12.0512512,11.0575491 14.1070479,11.8726507 14.872267,13.6429495 C14.8733283,13.6440108 14.8733283,13.6461335 14.8743896,13.6471948 C15.637486,15.4153709 14.8245071,17.4669222 13.0584536,18.2332027 L13.053147,18.2332027 Z M23.0169151,10.1182718 C22.6539401,9.27769828 21.6520444,8.63877749 20.7881216,8.70033464 C19.9241988,8.75976913 18.9244257,8.42226612 18.481851,7.99985669 C18.0392763,7.57956993 17.6805467,6.58191952 17.713448,5.71269008 C17.7452879,4.84452196 17.0777112,3.87022082 16.222279,3.52953382 C15.3668468,3.18990815 14.2110582,3.44887272 13.6432466,4.09946814 C13.0754349,4.74900224 12.1223604,5.22660084 11.5163408,5.24570478 C10.9103213,5.26374739 9.94663342,4.80949806 9.35971781,4.17588392 C8.77174087,3.54226978 7.60533896,3.31620644 6.7637041,3.67918138 C5.92313057,4.04321764 5.27996445,5.04405204 5.34046028,5.90903617 C5.40201743,6.77295896 5.06345309,7.77273203 4.64210499,8.21530673 C4.2207569,8.65788143 3.22310649,9.01236572 2.3591837,8.98370981 C1.49419957,8.95611522 0.515653108,9.6226306 0.176027438,10.4770014 C-0.163598232,11.3324336 0.0953663413,12.4871609 0.744900435,13.0560339 C1.39443453,13.6238455 1.87203313,14.5769201 1.89007574,15.1808169 C1.90917968,15.7836525 1.45705301,16.7505243 0.82131621,17.3374399 C0.18557941,17.9243556 -0.042606587,19.0896961 0.325674999,19.9355763 C0.692895254,20.7803952 1.69054566,21.419316 2.55446846,21.3577588 C3.41839125,21.2983243 4.41816432,21.6358273 4.86073902,22.0582368 C5.30331372,22.4785235 5.66204333,23.4719286 5.6291421,24.3400967 C5.59730219,25.2093262 6.2648789,26.182566 7.12349504,26.523253 C7.97998853,26.8628787 9.13365448,26.6049754 9.70146614,25.95438 C10.2703391,25.3048459 11.2202297,24.8272473 11.8262492,24.8176953 C12.4322688,24.8081434 13.3959566,25.2581474 13.9881789,25.8917615 C14.5793398,26.5243143 15.7446804,26.741887 16.5852539,26.3789121 C17.4268888,26.0148758 18.0700549,25.0182867 18.0084978,24.1533026 C17.9480019,23.2904411 18.2865663,22.2896067 18.7079144,21.847032 C19.1292625,21.4044573 20.1237289,21.0510344 20.9929583,21.0860583 C21.8621878,21.1210822 22.8354276,20.4503215 23.1761146,19.5927667 C23.5157403,18.7352118 23.2620823,17.5826072 22.6072416,17.0094889 C21.9524008,16.4363706 21.4758636,15.4949707 21.4588823,14.8825832 C21.4429623,14.2701956 21.895089,13.3118144 22.5329485,12.7259602 C23.1814212,12.0212369 23.370338,11.0076665 23.0169151,10.1182718 Z" fill="#FFFFFF"></path>
-                                                            <path d="M12.9176294,17.917518 C11.3216086,18.6083615 9.4691527,17.873503 8.77830913,16.2774821 C8.08842242,14.6814613 8.82328094,12.8290054 10.4193018,12.1391187 C12.0143658,11.4482751 13.8677785,12.1831337 14.5576653,13.7791545 C14.5586221,13.7801114 14.5586221,13.7820251 14.559579,13.7829819 C15.247552,15.3770891 14.5146071,17.2266744 12.9224137,17.917518 L12.9176294,17.917518 Z M21.9005095,10.6014655 C21.5732678,9.84364264 20.6700042,9.26762073 19.8911307,9.32311785 C19.1122572,9.37670129 18.2109073,9.07242393 17.811902,8.69159881 C17.4128968,8.31268738 17.0894825,7.41325116 17.1191448,6.62959343 C17.1478502,5.84689255 16.5459934,4.96850697 15.7747747,4.66135907 C15.003556,4.35516802 13.9615496,4.58863869 13.4496364,5.17518593 C12.9377232,5.76077632 12.0784746,6.19135749 11.5321149,6.20858074 C10.9857553,6.22484714 10.1169381,5.8153166 9.58780173,5.24407892 C9.05770847,4.67284123 8.00613357,4.46903281 7.24735387,4.7962745 C6.48953101,5.12447304 5.9096817,6.0267798 5.96422198,6.80661014 C6.01971911,7.58548363 5.71448491,8.48683354 5.33461663,8.88583876 C4.95474836,9.28484397 4.05531214,9.60443088 3.27643865,9.57859601 C2.49660831,9.55371799 1.61439534,10.1546179 1.30820428,10.9248798 C1.00201323,11.6960985 1.23548391,12.7371481 1.8210743,13.2500181 C2.40666469,13.7619313 2.83724585,14.6211799 2.85351225,15.1656259 C2.8707355,15.709115 2.46311866,16.5808027 1.88996728,17.1099391 C1.31681591,17.6390755 1.11109379,18.6896935 1.44311971,19.4523006 C1.77418879,20.2139509 2.67362501,20.7899728 3.4524985,20.7344757 C4.23137199,20.6808922 5.13272191,20.9851696 5.53172712,21.3659947 C5.93073234,21.7449061 6.25414664,22.640515 6.22448438,23.4232159 C6.19577897,24.2068736 6.79763576,25.0843023 7.57172501,25.3914502 C8.34390058,25.6976413 9.38399331,25.4651274 9.89590648,24.8785802 C10.4087765,24.2929898 11.2651546,23.8624086 11.8115143,23.853797 C12.3578739,23.8451854 13.226691,24.2508885 13.7606117,24.8221262 C14.2935755,25.3924071 15.3441935,25.5885607 16.1020164,25.261319 C16.8607961,24.9331205 17.4406454,24.0346411 17.3851483,23.2548108 C17.330608,22.4768941 17.6358422,21.5745874 18.0157105,21.1755822 C18.3955787,20.7765769 19.2921444,20.4579469 20.0758021,20.4895228 C20.8594599,20.5210988 21.7368886,19.9163714 22.0440365,19.143239 C22.3502276,18.3701066 22.1215411,17.3309707 21.5311665,16.8142733 C20.9407919,16.2975759 20.5111676,15.4488526 20.495858,14.8967519 C20.4815053,14.3446511 20.8891221,13.4806182 21.4641872,12.9524387 C22.0488207,12.3170922 22.2191395,11.4033033 21.9005095,10.6014655 Z" fill="#292929"></path>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <h3>Supported Operating Systems</h3>
-                                        <p>Genki OS</p>
-                                    </li>
+                                    {specsDOM}
+                                </ul>
+                            </div>
+                            <div className="pr-0 col-md-6 col-sm-12 col-xs-12 custom-specdom">
+                                <ul className="boxshadow xd list-icons p-0 no-list-style">
+                                    {specsDOM2}
                                 </ul>
                             </div>
                         </div>
@@ -334,30 +169,69 @@ class Device extends React.Component {
             </div>
         );
     }
+    renderSlider = () => {
+        const { imageSelected } = this.state;
+        const slides = [
+            { name: 'Ki Device Side', image: KiDeviceSide },
+            { name: 'Ki Device', image: KiDevice},
+            { name: 'Ki Device Side White', image: KiDeviceWhiteSide }
+        ];
+        let slidesDOM = slides.map((s, index) => {
+            return <div key={index} onClick={() => this.selectThisImage(s.image)} className="mr-3 cursor-pointer slide-wrapper"><img src={s.image} alt={s.name}/></div>
+        });
+        return (
+            <div>
+                <div className="slide-1">
+                    <img id="slide-1-wrapper" className="mb-5 animated" height="300" src={imageSelected} alt="Ki Device Main"/>
+                </div>
+                <Divider className="margin-auto" style={{width: '100px', backgroundColor: '#0021f5', height: '2px'}}/>
+                <div className="slide-2 vertical-align">
+                    {slidesDOM}
+                </div>
+            </div>
+        );
+    }
     render() {
         const { classes } = this.props;
+        const { value } = this.state;
         return (
             <div className={classes.root}>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-6 vertical-align" style={{marginTop: '-72px'}}>
+                    <div className="row device-wrapper">
+                        <div className="col-md-6" style={{marginTop: '120px'}}>
                             <div>
-                                <Typography align="center" className={classes.title} variant="h3">The Ki Device</Typography>
-                                <Typography align="center" variant="subtitle1" className={classes.subtitle}>A decentralized smart Homepod</Typography>
-                                <div className="mt-3 text-center">
-                                    <Scrollchor to="#about" className={classes.link}>About</Scrollchor>
-                                    <Scrollchor to="#capabilities" className={classes.link}>Capabilities</Scrollchor>
-                                    <Scrollchor to="#specifications" className={classes.link}>Specifications</Scrollchor>
+                                <Typography className={classes.title + ' animated fadeInLeft'} variant="h2">The Ki Device</Typography>
+                                <Typography variant="h5" className={classes.subtitle + ' animated fadeIn'}>A decentralized smart Homepod</Typography>
+                                <div className="mt-3">
+                                    <Tabs
+                                        value={value}
+                                        onChange={this.handleChange}
+                                        classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
+                                        >
+                                        <Tab
+                                            disableRipple
+                                            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+                                            label="About"
+                                        />
+                                        <Tab
+                                            disableRipple
+                                            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+                                            label="Capabilities"
+                                        />
+                                        <Tab
+                                            disableRipple
+                                            classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
+                                            label="Specifications"
+                                        />
+                                    </Tabs>
                                 </div>
+                                <div className="custom-content">{this.renderContents()}</div>
                             </div>
                         </div>
-                        <div className="col-md-6 text-center" style={{paddingTop: "72px"}}>
-                            <img className={classes.octagon} src={KiDevice} alt="Ki Device"/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            {this.renderTabsContent()}
+                        <div className="col-md-6 text-center vertical-align">
+                            <div className="mt-5">
+                                {this.renderSlider()}
+                            </div>
                         </div>
                     </div>
                 </div>
