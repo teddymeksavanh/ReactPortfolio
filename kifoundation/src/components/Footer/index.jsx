@@ -49,8 +49,8 @@ class Footer extends React.Component {
                     <div className="row">
                         <div className="col-md-4 mb-2">
                             <Typography className={classes.title} variant="h6"> The Ki Foundation </Typography>
-                            <a className={classes.link} href="https://domo.ki" href="/">Ki Device</a>
-                            <a className={classes.link} href="https://blockchain.ki">Ki Blockchain</a>
+                            <a className={classes.link} href="/device">Ki Device</a>
+                            <a className={classes.link} href="/blockchain">Ki Blockchain</a>
                             <a className={classes.link} href="https://wallet.ki">Ki Wallet</a>
                             {/* <a className={classes.link} href="/">Ki Ecosystem</a> */}
                             <a className={classes.link} href="/">Buy Ki</a>

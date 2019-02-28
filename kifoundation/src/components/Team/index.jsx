@@ -27,7 +27,6 @@ import fabrice from '../../assets/team/fabrice-epelboin.png';
 // import frederich from '../../assets/team/frederich.png';
 import lionel_brunie from '../../assets/team/lionel_brunie.png';
 import omar from '../../assets/team/omar.png';
-import tobias from '../../assets/team/tobias.png';
 import badr from '../../assets/team/badr.png';
 import teddy from '../../assets/team/teddy.png';
 import kk from '../../assets/team/kk.png';
@@ -325,15 +324,6 @@ class Team extends Component {
             <img src={omar} alt=""/>
             <span className="team-name">Omar Hasan</span>
             <span className="team-job">Associate Professor at the INSA de Lyon</span>
-          </div>
-          <div className="team-member col-xs-4 col-sm-4 col-md-3 col-lg-3">    
-            <img src={tobias} alt=""/>
-            <a id="home-team-linkedin-tobias" href="https://www.linkedin.com/in/tobias-mayer-b72b5653/" target="_blank" rel="noopener noreferrer" className="second">
-              <img src={linkedin} alt="linkedin"/>
-            </a>
-            <span className="team-name">Tobias Mayer</span>
-            <span className="team-job">Software architect & research engineer at
-the INSA de Lyon</span>
           </div>
           <div className="team-member col-xs-4 col-sm-4 col-md-3 col-lg-3">
             <img src={badr} alt=""/>
